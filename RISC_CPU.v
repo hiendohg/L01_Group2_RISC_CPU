@@ -63,7 +63,6 @@ Instruction_Register u_ir (
 
 // ========== ALU ==========
 // Ports: inA[31:0], inB[31:0], opcode[2:0], alu_out[31:0], is_zero
-// KHÔNG có ld_ir trong ALU
 ALU u_alu (
     .inA     (data_out),
     .inB     (data),

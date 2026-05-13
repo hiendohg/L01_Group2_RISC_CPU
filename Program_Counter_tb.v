@@ -34,13 +34,13 @@ module Program_Counter_tb ();
       data_pc_tb,
       address_program_tb
   );
-  always #10 clk_tb = ~clk_tb;  //chu k� 20ns
+  always #10 clk_tb = ~clk_tb;  //chu kì 20ns
   initial begin
   $monitor("Time=%0t | ld_pc=%b, inc_pc=%b, rst=%b, data=%0d | address=%0d", $time, ld_pc_tb, inc_pc_tb, rst_tb, data_pc_tb, address_program_tb); 
     clk_tb = 1'b0;
     {ld_pc_tb, inc_pc_tb, rst_tb, data_pc_tb} = {
       1'b0, 1'b0, 1'b0, 32'b0
-    };  //kh?i t?o tr?ng th�i ban ??u 
+    };  //khởi tạo trạng thái ban đầu
     #15{ld_pc_tb, inc_pc_tb, rst_tb, data_pc_tb} = {1'b1, 1'b0, 1'b1, 32'b1101};  //reset
     #20{ld_pc_tb, inc_pc_tb, rst_tb, data_pc_tb} = {1'b1, 1'b0, 1'b0, 32'b1101};  //load
     #20{ld_pc_tb, inc_pc_tb, rst_tb, data_pc_tb} = {1'b1, 1'b1, 1'b0, 32'b1101};  //load, count

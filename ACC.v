@@ -26,7 +26,7 @@ module ACC(
     input              ld_ac,
     input              data_e,
     input       [31:0] alu_out,
-    output reg  [31:0] data_out   // l?u giá tr? ACC
+    output reg  [31:0] data_out   // lưu giá trị ACC
     
 );
 

@@ -20,7 +20,7 @@ RISC_CPU uut (
     .rst (rst)
 );
 
-// ========== Alias ?? waveform d? ??c ==========
+// ========== Alias để waveform dễ đọc ==========
 assign PC_out      = uut.u_pc.address_program;
 assign opcode      = uut.u_ir.opcode;
 assign ACC_val     = uut.u_acc.data_out;
@@ -49,17 +49,17 @@ initial begin
     rst = 0;
 end
 
-// ========== N?p ch??ng tr�nh ==========
+// ========== Nạp chương trình ==========
 initial begin
     @(negedge rst);
     #1;
 
-    // D? li?u
+    // Dữ liệu
     uut.u_memory.mem[16] = 32'd5;
     uut.u_memory.mem[17] = 32'd3;
     uut.u_memory.mem[18] = 32'd0;
 
-    // L?nh
+    // Lệnh
     uut.u_memory.mem[0] = {3'b101, 29'd16}; // LDA 16
     uut.u_memory.mem[1] = {3'b010, 29'd17}; // ADD 17
     uut.u_memory.mem[2] = {3'b110, 29'd18}; // STO 18
@@ -82,11 +82,11 @@ initial begin
     $display("--------------------------------------------------------");
 end
 
-// ========== In tr?ng th�i m?i chu k? ==========
-// Ch? in khi ld_ac ho?c wr ho?c halt thay ??i ?? d? ??c
+// ========== In trạng thái mỗi chu kỳ ==========
+// Chỉ in khi ld_ac hoặc wr hoặc halt thay đổi để dễ đọc
 always @(posedge clk) begin
     if (!rst) begin
-        // In khi n?p ACC (k?t qu? ALU v�o ACC)
+        // In khi nạp ACC (kết quả ALU vào ACC)
         if (ld_ac) begin
             case (opcode)
                 3'b101: $display("  %0t ns  | PC=%0d | LDA    | ACC<=%0d (doc tu MEM[%0d])",
@@ -111,7 +111,7 @@ always @(posedge clk) begin
                 uut.u_acc.data_out);
         end
 
-        // In khi nh?y (JMP)
+        // In khi nhảy (JMP)
         if (ld_pc) begin
             $display("  %0t ns  | PC=%0d | JMP    | PC <= %0d",
                 $time, PC_out, uut.u_ir.address_instruction);
@@ -131,7 +131,7 @@ always @(posedge clk) begin
     end
 end
 
-// ========== Ki?m tra k?t qu? khi HALT ==========
+// ========== Kiểm tra kết quả khi HALT ==========
 initial begin
     @(negedge rst);
     forever begin

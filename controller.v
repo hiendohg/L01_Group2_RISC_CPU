@@ -68,7 +68,7 @@ module controller (
     ld_ac = 0;
     ld_pc = 0;
     wr = 0;
-    data_e = 0;  //kh?i t?o m?c ??nh, tr�nh latch
+    data_e = 0;  //khởi tạo mặc định, tránh latch
     case (state)
       INST_ADDR: begin
         sel = 1;

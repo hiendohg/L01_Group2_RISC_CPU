@@ -39,12 +39,12 @@ module controller_tb();
           $time, clk_tb, rst_tb, opcode_tb, is_zero_tb,
           sel_tb, rd_tb, ld_ir_tb, halt_tb, inc_pc_tb, ld_ac_tb, ld_pc_tb, wr_tb, data_e_tb);
         clk_tb     = 0;
-        rst_tb     = 1;  // reset m?c cao
+        rst_tb     = 1;  // reset mức cao
         opcode_tb  = 3'b000;
         is_zero_tb = 0;
 
         repeat(2) @(posedge clk_tb);
-        rst_tb = 0;      // th? reset, b?t ??u ch?y
+        rst_tb = 0;      // thả reset, bắt đầu chạy
 
         // HLT
         opcode_tb = 3'b000;
